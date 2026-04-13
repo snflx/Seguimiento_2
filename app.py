@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
@@ -25,7 +26,10 @@ st.set_page_config(
 def load_data():
     """Carga los datos limpios desde el archivo Excel."""
     try:
-        df = pd.read_excel('Data_Limpio.xlsx', sheet_name='Sheet1')
+        # Obtener la ruta dinámica independientemente de desde dónde se llame Streamlit
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(current_dir, 'Data_Limpio.xlsx')
+        df = pd.read_excel(file_path, sheet_name='Sheet1')
         return df
     except Exception as e:
         st.error(f"Error al cargar los datos: {e}")
