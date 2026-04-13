@@ -1,0 +1,9 @@
+streamlit==1.32.0
+pandas
+numpy
+matplotlib
+seaborn
+scipy
+scikit-learn
+openpyxl
+plotly
